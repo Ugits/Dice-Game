@@ -1,13 +1,10 @@
 /**
  * Game set up
  * The class purpose is to set the foundation for the game.
- * Quantity of dice, players
- *
- *
  */
 package com.jonas.dicegame;
 
-public class GameSetup {
+public class Setup {
     UserInput sc = new UserInput();
 
     int numOfPlayers;
@@ -16,7 +13,7 @@ public class GameSetup {
     /**
      * Declares number of dice and players.
      */
-    public GameSetup(){
+    public Setup(){
         //Todo call from userInput / make method
         System.out.print("Number of players: ");
         setNumOfPlayers(sc.tryNextInt());
