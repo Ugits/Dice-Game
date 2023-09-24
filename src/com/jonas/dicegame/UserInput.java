@@ -3,7 +3,11 @@ import java.util.Scanner;
 
 public class UserInput {
 
-    Scanner userInput = new Scanner(System.in);
+    Scanner userInput;
+
+    public UserInput(){
+        setUserInput(new Scanner(System.in));
+    }
 
     /**
      * Validates that user input is of type int
@@ -17,4 +21,13 @@ public class UserInput {
         }
         return userInput.nextInt();
     }
+
+    public Scanner getUserInput() {
+        return userInput;
+    }
+
+    public void setUserInput(Scanner userInput) {
+        this.userInput = userInput;
+    }
 }
+

@@ -6,17 +6,19 @@ package com.jonas.dicegame;
 
 public class Setup {
     UserInput sc = new UserInput();
-
+    int minNumOfPlayers = 2;
+    int maxNumOfPlayers = 20;
     int numOfPlayers;
     int numOfDice;
 
     /**
      * Declares number of dice and players.
      */
-    public Setup(){
+    public Setup() {
         //Todo call from userInput / make method
-        System.out.print("Number of players: ");
-        setNumOfPlayers(sc.tryNextInt());
+
+
+        setNumOfPlayers();
 
         System.out.print("Number of dice: ");
         setNumOfDice(sc.tryNextInt());
@@ -30,24 +32,44 @@ public class Setup {
     public int getNumOfPlayers() {
         return numOfPlayers;
     }
+
     /**
      * @return Number of dice.
      */
     public int getNumOfDice() {
         return numOfDice;
     }
+
     /**
      * Set number of players.
+     *
      * @param numOfPlayers
      */
-    public void setNumOfPlayers(int numOfPlayers) {
-        this.numOfPlayers = numOfPlayers;
+    public void setNumOfPlayers() {
+
+        do {
+            System.out.print("Number of players: ");
+            this.numOfPlayers = sc.tryNextInt();
+
+            //Todo method validNumOfPlayers()
+            if (numOfPlayers < minNumOfPlayers) {
+                System.out.println("It takes two, at least..");
+            }
+            if (numOfPlayers > maxNumOfPlayers) {
+                System.out.println("Not enough chairs..");
+            }
+
+        } while (numOfPlayers < minNumOfPlayers || numOfPlayers > maxNumOfPlayers);
+
     }
+
     /**
      * Set number of dice
+     *
      * @param numOfDice
      */
     public void setNumOfDice(int numOfDice) {
+
         this.numOfDice = numOfDice;
     }
 }
