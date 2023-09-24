@@ -5,23 +5,22 @@
 package com.jonas.dicegame;
 
 public class Setup {
+
     UserInput sc = new UserInput();
+
+    int numOfPlayers;
     int minNumOfPlayers = 2;
     int maxNumOfPlayers = 20;
-    int numOfPlayers;
     int numOfDice;
-
+    int minNumOfDice = 1;
+    int maxNumOfDice = 20;
     /**
      * Declares number of dice and players.
      */
     public Setup() {
-        //Todo call from userInput / make method
-
 
         setNumOfPlayers();
-
-        System.out.print("Number of dice: ");
-        setNumOfDice(sc.tryNextInt());
+        setNumOfDice();
 
         System.out.println();
     }
@@ -68,8 +67,20 @@ public class Setup {
      *
      * @param numOfDice
      */
-    public void setNumOfDice(int numOfDice) {
+    public void setNumOfDice() {
 
-        this.numOfDice = numOfDice;
+        do {
+            System.out.print("Number of dice: ");
+            this.numOfDice = sc.tryNextInt();
+
+            //Todo method validNumOfDice()
+            if (numOfDice < minNumOfDice) {
+                System.out.println("Gonna play with air?..");
+            }
+            if (numOfDice > maxNumOfDice) {
+                System.out.println("Dude.. really?..");
+            }
+
+        } while (numOfDice < minNumOfDice || numOfDice > maxNumOfDice);
     }
 }
