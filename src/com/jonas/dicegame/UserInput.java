@@ -6,7 +6,7 @@ public class UserInput {
     Scanner userInput = new Scanner(System.in);
 
     /**
-     * Ensure that user input is of type int
+     * Validates that user input is of type int
      * @return An int from user
      */
     public int tryNextInt(){
