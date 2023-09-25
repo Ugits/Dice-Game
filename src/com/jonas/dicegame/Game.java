@@ -51,20 +51,9 @@ public class Game {
         table.displayPlayerTable();
 
         //compare score
-
-        //todo printa alla som delar på högsta påäng
-
-        //todo printa alla som delar på näst högsta påäng
-
-        //todo print alla som delar på tredje högsta poäng
-
         Player[] gold = new Player[setup.numOfPlayers];
         Player[] silver = new Player[setup.numOfPlayers];
         Player[] bronze = new Player[setup.numOfPlayers];
-
-
-
-        table.displayPlayerTable();
 
         int playerCount = 0;
         int goldCount = 0, silverCount = 0, bronzeCount = 0;
@@ -73,27 +62,52 @@ public class Game {
             if (player == null) {
                 continue;
             }
-
+            table.displayPlayerTable();
             int playerScore = table.getPlayerTable()[playerCount].getTotalScore();
-            playerCount++;
+
 
             if (playerScore >= goldThreshold) {
                 gold[goldCount] = player;
                 goldCount++;
-                goldThreshold = table.getPlayerTable()[playerCount].getTotalScore();
-                System.out.println("Gold");
+                playerCount++;
+                goldThreshold = playerScore;
+                System.out.println("Gold [DEBUG]");
             } else if (playerScore >= silverThreshold) {
                 silver[silverCount] = player;
                 silverCount++;
-                silverThreshold = table.getPlayerTable()[playerCount].getTotalScore();
-                System.out.println("Silver");
+                playerCount++;
+                silverThreshold = playerScore;
+                System.out.println("Silver [DEBUG]");
             } else if (playerScore >= bronzeThreshold) {
                 bronze[bronzeCount] = player;
                 bronzeCount++;
-                silverThreshold = table.getPlayerTable()[playerCount].getTotalScore();
-                System.out.println("Bronze");
+                playerCount++;
+                silverThreshold = playerScore;
+                System.out.println("Bronze [DEBUG]");
             }
         }
+
+        //announce the winners
+        System.out.println("On third place.. with " + bronzeThreshold + " points!");
+
+        for (int i = 0; i < bronzeCount; i++) {
+            System.out.print(" [-" + bronze[i].getName() + "-] ");
+        }
+        System.out.println();
+
+        System.out.println("And for the silver with " + silverThreshold + " points!");
+        for (int i = 0; i < silverCount; i++) {
+            System.out.print(" [-" + silver[i].getName() + "-] ");
+        }
+        System.out.println(" ");
+
+        System.out.println("And in the top, carrying the Gold..");
+        for (int i = 0; i < goldCount; i++) {
+            System.out.print(" [-" + gold[i].getName() + "-] ");
+        }
+        System.out.println("With " + goldThreshold + " points!!");
+
+
 
     }
 
@@ -103,7 +117,8 @@ public class Game {
     //  * sum score
     //  * add score
     //TODO score
-    //  compare score
+    //  * compare score
+    //  * sort into gold, silver and bronze
     //  declare winner
     //  declare more than 1 winner // compare winner to next in table
     //  1,2,3 place?
