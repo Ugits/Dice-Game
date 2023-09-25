@@ -9,10 +9,8 @@ public class Game {
 
             // Instantiate the custom build scanner
             UserInput sc = new UserInput();
-
             // Set num of players and dice
             Setup setup = new Setup();
-
             // Creates an array of players
             Table table = new Table(setup.numOfPlayers);
 
@@ -25,3 +23,4 @@ public class Game {
 
     }
 }
+
