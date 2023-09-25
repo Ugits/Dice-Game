@@ -26,8 +26,8 @@ public class Dice {
         System.out.println("[DEBUG] Score Descending  [DEBUG]");
     }
 
-    public void printDice(){
-        System.out.println(Arrays.toString(set));
+    public String printRoll(){
+        return Arrays.toString(set);
     }
 
     public int[] getSet() {
