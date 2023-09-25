@@ -7,6 +7,7 @@ public class Table {
 
     Player[] players;
 
+
     public Table(int numOfPlayers){
 
         this.players = new Player[numOfPlayers];
@@ -37,6 +38,8 @@ public class Table {
     public Player[] getPlayerTable() {
         return players;
     }
+
+
 
     public void setPlayerTable(Player[] playerTable) {
         this.players = playerTable;
