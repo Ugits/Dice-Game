@@ -1,24 +1,15 @@
 package com.jonas.dicegame;
 
 public class Player {
+    UserInput sc = new UserInput();
 
     int pNum;
     String name;
-    int score;
+    int totalScore;
     boolean winner;
 
-    /**
-     * Declares player name och initialize score.
-     */
-    public Player (){
-        UserInput sc = new UserInput();
 
-        System.out.print("Enter you name: ");
-        setPlayerName(sc.userInput.nextLine());
-        setScore(0);
-    }
 
-    // getter-setter
     public int getPlayerNum() {
         return pNum;
     }
@@ -31,16 +22,17 @@ public class Player {
         return name;
     }
 
-    public void setPlayerName(String playerName) {
-        this.name = playerName;
+    public void setName() {
+        System.out.print("Player " + this.getPlayerNum() + " Enter you name: ");
+        this.name = sc.userInput.nextLine();
     }
 
-    public int getScore() {
-        return score;
+    public int getTotalScore() {
+        return totalScore;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
     }
 
     public boolean isWinner() {
@@ -50,4 +42,5 @@ public class Player {
     public void setWinner(boolean winner) {
         this.winner = winner;
     }
+
 }
