@@ -1,10 +1,8 @@
 package com.jonas.dicegame;
 
-import java.util.Arrays;
-
 public class Game {
-
-
+    int setupRounds = 5;
+    int currentRound = 0;
     public Game() {
         //Wrap in do while
         // here goes game mechanics
@@ -20,35 +18,33 @@ public class Game {
 
         Dice d6 = new Dice();
 
-        //flera rundor
-        //roll
-        d6.roll(setup.getNumOfDice());
-        //sum roll
-        int sum = d6.sumUpRoll();
-        // add score
-        table.getPlayerTable()[0].setTotalScore(sum);
-        //print roll + roll total
-        System.out.println(d6.printRoll() + " = " + d6.sumUpRoll());
-        //print player total
-        System.out.println("Total Score: " + table.getPlayerTable()[0].getTotalScore());
+        /** //GameLoop
 
-        //next player
+        do {
 
-        //roll
-        d6.roll(setup.getNumOfDice());
-        //sum roll
-        sum = d6.sumUpRoll();
-        // add score
-        table.getPlayerTable()[1].setTotalScore(sum);
-        //print roll + roll total
-        System.out.println(d6.printRoll() + " = " + d6.sumUpRoll());
-        //print player total
-        System.out.println("Total score: " + table.getPlayerTable()[1].getTotalScore());
+        }while (currentRound <= setupRounds);
+        */
 
+        // runda där alla kastar
+        for (int i = 0; i < table.getPlayerTable().length; i++) {
+            currentRound++;
+            System.out.println("Round " + currentRound + "!");
+            //roll
+            d6.roll(setup.getNumOfDice());
+            //sum roll
+            int sum = d6.sumUpRoll();
+            // add score
+            table.getPlayerTable()[i].addTotalScore(sum);
+            //print roll + roll total
+            System.out.println(table.getPlayerTable()[i].getName() + " Rolls... ");
+            System.out.println(d6.printRoll() + " = " + d6.sumUpRoll());
+            //print player total
+            System.out.println("Current Score: " + table.getPlayerTable()[i].getTotalScore());
+            System.out.println();
+        }
 
         // Sort by score, descending,  and Print table
         table.sortScoreDescending();
-        table.displayPlayerTable();
 
         //compare score
         Player[] gold = new Player[setup.numOfPlayers];
@@ -62,9 +58,8 @@ public class Game {
             if (player == null) {
                 continue;
             }
-            table.displayPlayerTable();
-            int playerScore = table.getPlayerTable()[playerCount].getTotalScore();
 
+            int playerScore = table.getPlayerTable()[playerCount].getTotalScore();
 
             if (playerScore >= goldThreshold) {
                 gold[goldCount] = player;
@@ -72,18 +67,21 @@ public class Game {
                 playerCount++;
                 goldThreshold = playerScore;
                 System.out.println("Gold [DEBUG]");
+
             } else if (playerScore >= silverThreshold) {
                 silver[silverCount] = player;
                 silverCount++;
                 playerCount++;
                 silverThreshold = playerScore;
                 System.out.println("Silver [DEBUG]");
+
             } else if (playerScore >= bronzeThreshold) {
                 bronze[bronzeCount] = player;
                 bronzeCount++;
                 playerCount++;
-                silverThreshold = playerScore;
+                bronzeThreshold = playerScore;
                 System.out.println("Bronze [DEBUG]");
+
             }
         }
 

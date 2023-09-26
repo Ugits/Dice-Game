@@ -35,6 +35,10 @@ public class Player {
         this.totalScore = totalScore;
     }
 
+    public void addTotalScore(int scoreToAdd){
+        this.totalScore += scoreToAdd;
+    }
+
     public boolean isWinner() {
         return winner;
     }

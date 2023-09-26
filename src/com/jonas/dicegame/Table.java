@@ -5,29 +5,29 @@ import java.util.Comparator;
 
 public class Table {
 
-    Player[] players;
+    Player[] playerTable;  //TODO - as ArrayList<Player>? (se kristoffer (video 26 sep 2:50))
 
 
     public Table(int numOfPlayers){
 
-        this.players = new Player[numOfPlayers];
+        this.playerTable = new Player[numOfPlayers];
         for (int i = 0; i < numOfPlayers; i++) {
-            this.players[i] = new Player();
-            this.players[i].setPlayerNum(i+1);
-            this.players[i].setName();
+            this.playerTable[i] = new Player();
+            this.playerTable[i].setPlayerNum(i+1);
+            this.playerTable[i].setName();
         }
         System.out.println();
     }
 
     public void sortScoreDescending(){
         //sorts the original array - implement in Table class
-        Arrays.sort(this.players, Comparator.comparingInt(Player::getTotalScore).reversed());
+        Arrays.sort(this.playerTable, Comparator.comparingInt(Player::getTotalScore).reversed());
         System.out.println("[DEBUG] Score Descending  [DEBUG]");
     }
 
     public void displayPlayerTable(){
-        for (int i = 0; i < this.players.length; i++) {
-            Player player = this.players[i];
+        for (int i = 0; i < this.playerTable.length; i++) {
+            Player player = this.playerTable[i];
             System.out.println("Player: " + player.getPlayerNum());
             System.out.println("Name: " + player.getName());
             System.out.println("Score: " + player.getTotalScore());
@@ -36,12 +36,12 @@ public class Table {
     }
 
     public Player[] getPlayerTable() {
-        return players;
+        return playerTable;
     }
 
 
 
     public void setPlayerTable(Player[] playerTable) {
-        this.players = playerTable;
+        this.playerTable = playerTable;
     }
 }
