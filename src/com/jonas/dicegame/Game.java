@@ -9,35 +9,21 @@ public class Game {
     Dice d6;
 
 
-    int currentRound = 0;
+
 
     public Game() {
         loop();
     }
 
     public void loop(){
+                                                                         //TODO NEXT new game?
+        do {
 
-        instantiation();
-
-        /** //GameLoop
-
-         do {
-         currentRound++;
-         System.out.println("Round " + currentRound + "!");
-         }while (currentRound <= setupRounds);
-         */
-
-
-        for (int i = 0; i < setup.getRounds(); i++) {
-            logics(table,d6,setup);
-        }
-
-        // Sort by score, descending,  and Print table
-        table.sortScoreDescending();
-        //assign medals
-        finalScore.assignMedals();
-        //announce the winners
-        finalScore.announceWinners();
+            instantiation();
+            for (int i = 0; i < setup.getRounds(); i++) logics();
+            declareWinners();
+            //TODO Options - new game, quit (if else)
+        } while (true);
     }
 
     public void instantiation(){
@@ -47,8 +33,7 @@ public class Game {
         this.finalScore = new Scoring(setup.numPlayers, table.getPlayerTable());
         this.d6 = new Dice();
     }
-
-    public void logics(Table table, Dice d6, Setup setup){
+    public void logics(){
         for (int i = 0; i < table.getPlayerTable().length; i++) {
             //roll
             d6.roll(setup.getNumDice());
@@ -63,6 +48,14 @@ public class Game {
             System.out.println("Current Score: " + table.getPlayerTable()[i].getTotalScore());
             System.out.println();
         }
+    }
+    public void declareWinners(){
+        // Sort by score, descending,  and Print table
+        table.sortScoreDescending();
+        //assign medals
+        finalScore.assignMedals();
+        //announce the winners
+        finalScore.announceWinners();
     }
 
 
