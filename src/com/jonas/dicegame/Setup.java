@@ -7,37 +7,42 @@ package com.jonas.dicegame;
 public class Setup {
 
     UserInput sc = new UserInput();
-
-    int numOfPlayers;
-    int minNumOfPlayers = 2;
-    int maxNumOfPlayers = 20;
-    int numOfDice;
-    int minNumOfDice = 1;
-    int maxNumOfDice = 20;
+    int rounds = 3;
+    int minRounds = 1;
+    int maxRounds = 20;
+    int numPlayers;
+    int minPlayers = 2;
+    int maxPlayers = 20;
+    int numDice;
+    int minDice = 1;
+    int maxDice = 20;
     /**
      * Declares number of dice and players.
      */
-
-
-    public void setUpGame(){
+    public Setup(){
         setNumOfPlayers();
         setNumOfDice();
-
+        //TODO
+        // - how many rounds?
         System.out.println();
+    }
+
+    public int getRounds() {
+        return rounds;
     }
 
     /**
      * @return Number of players.
      */
-    public int getNumOfPlayers() {
-        return numOfPlayers;
+    public int getNumPlayers() {
+        return numPlayers;
     }
 
     /**
      * @return Number of dice.
      */
-    public int getNumOfDice() {
-        return numOfDice;
+    public int getNumDice() {
+        return numDice;
     }
 
     /**
@@ -49,17 +54,17 @@ public class Setup {
 
         do {
             System.out.print("Number of players: ");
-            this.numOfPlayers = sc.tryNextInt();
+            this.numPlayers = sc.tryNextInt();
 
             //Todo method validNumOfPlayers()
-            if (numOfPlayers < minNumOfPlayers) {
+            if (numPlayers < minPlayers) {
                 System.out.println("It takes two, at least..");
             }
-            if (numOfPlayers > maxNumOfPlayers) {
+            if (numPlayers > maxPlayers) {
                 System.out.println("Not enough chairs..");
             }
 
-        } while (numOfPlayers < minNumOfPlayers || numOfPlayers > maxNumOfPlayers);
+        } while (numPlayers < minPlayers || numPlayers > maxPlayers);
 
     }
 
@@ -72,16 +77,16 @@ public class Setup {
 
         do {
             System.out.print("Number of dice: ");
-            this.numOfDice = sc.tryNextInt();
+            this.numDice = sc.tryNextInt();
 
             //Todo method validNumOfDice()
-            if (numOfDice < minNumOfDice) {
+            if (numDice < minDice) {
                 System.out.println("Gonna play with air?..");
             }
-            if (numOfDice > maxNumOfDice) {
+            if (numDice > maxDice) {
                 System.out.println("Dude.. really?..");
             }
 
-        } while (numOfDice < minNumOfDice || numOfDice > maxNumOfDice);
+        } while (numDice < minDice || numDice > maxDice);
     }
 }

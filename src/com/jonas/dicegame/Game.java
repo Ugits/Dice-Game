@@ -1,30 +1,23 @@
 package com.jonas.dicegame;
 
-import java.util.Arrays;
-
 public class Game {
 
-    int setupRounds = 5;
+    UserInput sc;
+    Setup setup;
+    Table table;
+    Scoring finalScore;
+    Dice d6;
+
+
     int currentRound = 0;
 
     public Game() {
-        gameLogic();
+        loop();
     }
 
-    public void gameLogic(){
-        //Wrap in do while
-        // here goes game mechanics
+    public void loop(){
 
-        // Instantiate the custom build scanner
-        UserInput sc = new UserInput();
-        // Set num of players and dice
-        Setup setup = new Setup();
-        setup.setUpGame();
-        // Creates an array of players
-        Table table = new Table(setup.numOfPlayers);
-        Scoring finalScore = new Scoring(setup.numOfPlayers, table.getPlayerTable());
-
-        Dice d6 = new Dice();
+        instantiation();
 
         /** //GameLoop
 
@@ -34,10 +27,31 @@ public class Game {
          }while (currentRound <= setupRounds);
          */
 
-        // runda där alla kastar
+
+        for (int i = 0; i < setup.getRounds(); i++) {
+            logics(table,d6,setup);
+        }
+
+        // Sort by score, descending,  and Print table
+        table.sortScoreDescending();
+        //assign medals
+        finalScore.assignMedals();
+        //announce the winners
+        finalScore.announceWinners();
+    }
+
+    public void instantiation(){
+        this.sc = new UserInput();
+        this.setup = new Setup();
+        this.table = new Table(setup.numPlayers);
+        this.finalScore = new Scoring(setup.numPlayers, table.getPlayerTable());
+        this.d6 = new Dice();
+    }
+
+    public void logics(Table table, Dice d6, Setup setup){
         for (int i = 0; i < table.getPlayerTable().length; i++) {
             //roll
-            d6.roll(setup.getNumOfDice());
+            d6.roll(setup.getNumDice());
             //sum roll
             int sum = d6.sumUpRoll();
             // add score
@@ -49,13 +63,6 @@ public class Game {
             System.out.println("Current Score: " + table.getPlayerTable()[i].getTotalScore());
             System.out.println();
         }
-
-        // Sort by score, descending,  and Print table
-        table.sortScoreDescending();
-        //assign medals
-        finalScore.assignMedals();
-        //announce the winners
-        finalScore.announceWinners();
     }
 
 
@@ -68,10 +75,10 @@ public class Game {
     //TODO score
     //  * compare score
     //  * sort into gold, silver and bronze
-    //  declare winner
-    //  declare more than 1 winner // compare winner to next in table
-    //  1,2,3 place?
-    //  for loop --> round
+    //  * declare winner
+    //  * declare more than 1 winner // compare winner to next in table
+    //  * 1,2,3 place?
+    //  * for loop --> round
     //  ending options
     //  play again?
     //  New game
