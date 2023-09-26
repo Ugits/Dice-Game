@@ -1,9 +1,16 @@
 package com.jonas.dicegame;
 
+import java.util.Arrays;
+
 public class Game {
     int setupRounds = 5;
     int currentRound = 0;
     public Game() {
+        gameLogic();
+
+    }
+
+    public void gameLogic(){
         //Wrap in do while
         // here goes game mechanics
 
@@ -11,24 +18,25 @@ public class Game {
         UserInput sc = new UserInput();
         // Set num of players and dice
         Setup setup = new Setup();
+        setup.setUpGame();
         // Instantiate the Player class
         //Player player = new Player();
         // Creates an array of players
         Table table = new Table(setup.numOfPlayers);
+        Scoring finalScore = new Scoring(setup.numOfPlayers, table.getPlayerTable());
 
         Dice d6 = new Dice();
 
         /** //GameLoop
 
-        do {
-
-        }while (currentRound <= setupRounds);
-        */
+         do {
+         currentRound++;
+         System.out.println("Round " + currentRound + "!");
+         }while (currentRound <= setupRounds);
+         */
 
         // runda där alla kastar
         for (int i = 0; i < table.getPlayerTable().length; i++) {
-            currentRound++;
-            System.out.println("Round " + currentRound + "!");
             //roll
             d6.roll(setup.getNumOfDice());
             //sum roll
@@ -45,69 +53,13 @@ public class Game {
 
         // Sort by score, descending,  and Print table
         table.sortScoreDescending();
-
-        //compare score
-        Player[] gold = new Player[setup.numOfPlayers];
-        Player[] silver = new Player[setup.numOfPlayers];
-        Player[] bronze = new Player[setup.numOfPlayers];
-
-        int playerCount = 0;
-        int goldCount = 0, silverCount = 0, bronzeCount = 0;
-        int goldThreshold = 0, silverThreshold = 0, bronzeThreshold = 0;
-        for (Player player : table.getPlayerTable()) {
-            if (player == null) {
-                continue;
-            }
-
-            int playerScore = table.getPlayerTable()[playerCount].getTotalScore();
-
-            if (playerScore >= goldThreshold) {
-                gold[goldCount] = player;
-                goldCount++;
-                playerCount++;
-                goldThreshold = playerScore;
-                System.out.println("Gold [DEBUG]");
-
-            } else if (playerScore >= silverThreshold) {
-                silver[silverCount] = player;
-                silverCount++;
-                playerCount++;
-                silverThreshold = playerScore;
-                System.out.println("Silver [DEBUG]");
-
-            } else if (playerScore >= bronzeThreshold) {
-                bronze[bronzeCount] = player;
-                bronzeCount++;
-                playerCount++;
-                bronzeThreshold = playerScore;
-                System.out.println("Bronze [DEBUG]");
-
-            }
-        }
-
+        //assign medals
+        finalScore.assignMedals();
         //announce the winners
-        System.out.println("On third place.. with " + bronzeThreshold + " points!");
-
-        for (int i = 0; i < bronzeCount; i++) {
-            System.out.print(" [-" + bronze[i].getName() + "-] ");
-        }
-        System.out.println();
-
-        System.out.println("And for the silver with " + silverThreshold + " points!");
-        for (int i = 0; i < silverCount; i++) {
-            System.out.print(" [-" + silver[i].getName() + "-] ");
-        }
-        System.out.println(" ");
-
-        System.out.println("And in the top, carrying the Gold..");
-        for (int i = 0; i < goldCount; i++) {
-            System.out.print(" [-" + gold[i].getName() + "-] ");
-        }
-        System.out.println("With " + goldThreshold + " points!!");
-
-
-
+        finalScore.announceWinners();
     }
+
+
 
 
     //todo Turn

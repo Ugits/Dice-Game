@@ -17,8 +17,9 @@ public class Setup {
     /**
      * Declares number of dice and players.
      */
-    public Setup() {
 
+
+    public void setUpGame(){
         setNumOfPlayers();
         setNumOfDice();
 
