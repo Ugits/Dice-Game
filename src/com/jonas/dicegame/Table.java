@@ -7,11 +7,6 @@ public class Table {
 
     Player[] playerTable;  //TODO - as ArrayList<Player>? (se kristoffer (video 26 sep 2:50))
 
-
-
-    public Table(){
-
-    }
     public Table(int numOfPlayers){
 
         this.playerTable = new Player[numOfPlayers];

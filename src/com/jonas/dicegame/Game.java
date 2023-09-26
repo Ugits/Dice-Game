@@ -3,11 +3,12 @@ package com.jonas.dicegame;
 import java.util.Arrays;
 
 public class Game {
+
     int setupRounds = 5;
     int currentRound = 0;
+
     public Game() {
         gameLogic();
-
     }
 
     public void gameLogic(){
@@ -19,8 +20,6 @@ public class Game {
         // Set num of players and dice
         Setup setup = new Setup();
         setup.setUpGame();
-        // Instantiate the Player class
-        //Player player = new Player();
         // Creates an array of players
         Table table = new Table(setup.numOfPlayers);
         Scoring finalScore = new Scoring(setup.numOfPlayers, table.getPlayerTable());
@@ -75,7 +74,8 @@ public class Game {
     //  for loop --> round
     //  ending options
     //  play again?
-    //  play another game
+    //  New game
+    //
 
     // Assign score for compare
     // table.players[1].setTotalScore(5);

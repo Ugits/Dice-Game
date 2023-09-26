@@ -10,7 +10,6 @@ public class Dice {
     private int value;
     private int[] set;
 
-
     public void roll(int numOfDice){
         this.set = new int[numOfDice];
         for (int i = 0; i < numOfDice; i++) this.set[i] = genNum();
@@ -21,9 +20,12 @@ public class Dice {
         return rand.nextInt(numSides) + 1;
     }
 
+    /**
+     * sorts set of dice in descending order
+     */
     public void sortSetDesc(){
         Arrays.sort(set);
-        System.out.println("[DEBUG] Score Descending  [DEBUG]");
+        //System.out.println("[DEBUG] Score Descending  [DEBUG]");
     }
 
     public String printRoll(){

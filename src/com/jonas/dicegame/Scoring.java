@@ -9,6 +9,7 @@ public class Scoring {
 
     int goldScore = 0, silverScore = 0, bronzeScore = 0;
 
+
     public Scoring(int numOfPlayers, Player[] table){
 
         this.gold = new Player[numOfPlayers];
@@ -75,5 +76,6 @@ public class Scoring {
         }
         System.out.println("With " + goldScore + " points!!");
     }
+
 
 }
