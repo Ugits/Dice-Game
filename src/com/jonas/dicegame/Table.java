@@ -5,42 +5,47 @@ import java.util.Comparator;
 
 public class Table {
 
-    Player[] playerTable;  //TODO - as ArrayList<Player>? (se kristoffer (video 26 sep 2:50))
+    Player[] table;  //TODO - as ArrayList<Player>? (se kristoffer (video 26 sep 2:50))
 
+    /**
+     * Constructs object that holds an array with all players
+     * @param numOfPlayers number of players
+     */
     public Table(int numOfPlayers){
-
-        this.playerTable = new Player[numOfPlayers];
+        this.table = new Player[numOfPlayers];
         for (int i = 0; i < numOfPlayers; i++) {
-            this.playerTable[i] = new Player();
-            this.playerTable[i].setPlayerNum(i+1);
-            this.playerTable[i].setName();
+            this.table[i] = new Player();
+            this.table[i].setPlayerNum(i+1);
+            this.table[i].setName();
         }
         System.out.println();
     }
-
+    /**
+     * Sorts the player table in descending order
+     */
     public void sortScoreDescending(){
-        //sorts the original array - implement in Table class
-        Arrays.sort(this.playerTable, Comparator.comparingInt(Player::getTotalScore).reversed());
-        System.out.println("[DEBUG] Score Descending  [DEBUG]");
+        Arrays.sort(this.table, Comparator.comparingInt(Player::getTotalScore).reversed());
+    }
+    /**
+     *
+     * @return Player[ ] playerTable
+     */
+    public Player[] getTable() {
+        return table;
+    }
+
+
+    public void setTable(Player[] table) {
+        this.table = table;
     }
 
     public void displayPlayerTable(){
-        for (int i = 0; i < this.playerTable.length; i++) {
-            Player player = this.playerTable[i];
+        for (int i = 0; i < this.table.length; i++) {
+            Player player = this.table[i];
             System.out.println("Player: " + player.getPlayerNum());
             System.out.println("Name: " + player.getName());
             System.out.println("Score: " + player.getTotalScore());
             System.out.println();
         }
-    }
-
-    public Player[] getPlayerTable() {
-        return playerTable;
-    }
-
-
-
-    public void setPlayerTable(Player[] playerTable) {
-        this.playerTable = playerTable;
     }
 }

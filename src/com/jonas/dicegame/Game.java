@@ -9,16 +9,19 @@ public class Game {
     Dice d6;
 
 
-
-
+    /**
+     *  Creates object that initiate a new game
+     */
     public Game() {
         loop();
     }
 
+    /**
+     * Initiates game loop
+     */
     public void loop(){
-                                                                         //TODO NEXT new game?
-        do {
 
+        do {
             instantiation();
             for (int i = 0; i < setup.getRounds(); i++) logics();
             declareWinners();
@@ -26,35 +29,40 @@ public class Game {
         } while (true);
     }
 
+    /**
+     * Resets the game
+     */
     public void instantiation(){
         this.sc = new UserInput();
         this.setup = new Setup();
-        this.table = new Table(setup.numPlayers);
-        this.finalScore = new Scoring(setup.numPlayers, table.getPlayerTable());
+        this.table = new Table(setup.getNumPlayers());
+        this.finalScore = new Scoring(setup.getNumPlayers(), table.getTable());
         this.d6 = new Dice();
     }
+    /**
+     * The logics for one turn.
+     * Compiler iterates through all players
+     */
     public void logics(){
-        for (int i = 0; i < table.getPlayerTable().length; i++) {
-            //roll
+        for (int i = 0; i < table.getTable().length; i++) {
             d6.roll(setup.getNumDice());
-            //sum roll
             int sum = d6.sumUpRoll();
             // add score
-            table.getPlayerTable()[i].addTotalScore(sum);
+            table.getTable()[i].addTotalScore(sum);
             //print roll + roll total
-            System.out.println(table.getPlayerTable()[i].getName() + " Rolls... ");
+            System.out.println(table.getTable()[i].getName() + " Rolls... ");
             System.out.println(d6.printRoll() + " = " + d6.sumUpRoll());
             //print player total
-            System.out.println("Current Score: " + table.getPlayerTable()[i].getTotalScore());
+            System.out.println("Current Score: " + table.getTable()[i].getTotalScore());
             System.out.println();
         }
     }
+    /**
+     * sorts player accordingly to their final scores, and announcing placings
+     */
     public void declareWinners(){
-        // Sort by score, descending,  and Print table
         table.sortScoreDescending();
-        //assign medals
         finalScore.assignMedals();
-        //announce the winners
         finalScore.announceWinners();
     }
 

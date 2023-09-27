@@ -7,6 +7,7 @@ package com.jonas.dicegame;
 public class Setup {
 
     UserInput sc = new UserInput();
+
     int rounds = 3;
     int minRounds = 1;
     int maxRounds = 20;
@@ -16,8 +17,9 @@ public class Setup {
     int numDice;
     int minDice = 1;
     int maxDice = 20;
+
     /**
-     * Declares number of dice and players.
+     * Constructs object with fundamental game setup
      */
     public Setup(){
         setNumOfPlayers();
@@ -27,6 +29,9 @@ public class Setup {
         System.out.println();
     }
 
+    /**
+     * @return number of rounds
+     */
     public int getRounds() {
         return rounds;
     }

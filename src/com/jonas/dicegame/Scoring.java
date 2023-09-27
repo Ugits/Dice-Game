@@ -9,6 +9,12 @@ public class Scoring {
 
     int goldScore = 0, silverScore = 0, bronzeScore = 0;
 
+    /**
+     * Constructs object that imports player array.
+     * And instantiates additional arrays for sorting final scores.
+     * @param numOfPlayers number of players
+     * @param table Player[ ] table
+     */
     public Scoring(int numOfPlayers, Player[] table){
 
         this.gold = new Player[numOfPlayers];
@@ -16,7 +22,9 @@ public class Scoring {
         this.bronze = new Player[numOfPlayers];
         this.table = table;
     }
-
+    /**
+     * Sorts players into arrays corresponding to their placings
+     */
     public void assignMedals(){
 
         int playerCount = 0;
@@ -53,27 +61,22 @@ public class Scoring {
         }
     }
 
+    /**
+     * Prints the players with the top 3 scores
+     */
     public void announceWinners(){
-        System.out.println("On third place.. with " + this.bronzeScore + " points!");
 
-        for (int i = 0; i < bronze.length; i++) {
-            if (bronze[i] != null) System.out.print(" [-" + bronze[i].getName() + "-] ");
-        }
+        System.out.println("On third place.. with " + this.bronzeScore + " points!");
+        for (Player item : this.bronze) if (item != null) System.out.print(" [-" + item.getName() + "-] ");
         System.out.println();
 
-        System.out.println("And for the silver with " + silverScore + " points!");
-        for (int i = 0; i < silver.length; i++) {
-
-            if (silver[i] != null) System.out.print(" [-" + silver[i].getName() + "-] ");
-        }
+        System.out.println("And for the silver with " + this.silverScore + " points!");
+        for (Player value : this.silver) if (value != null) System.out.print(" [-" + value.getName() + "-] ");
         System.out.println();
 
         System.out.println("And in the top, carrying the Gold..");
-        for (int i = 0; i < gold.length; i++) {
-
-            if (gold[i] != null) System.out.print(" [-" + gold[i].getName() + "-] ");
-        }
-        System.out.println("With " + goldScore + " points!!");
+        for (Player player : this.gold) if (player != null) System.out.print(" [-" + player.getName() + "-] ");
+        System.out.println("With " + this.goldScore + " points!!");
     }
 
 
