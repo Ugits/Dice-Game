@@ -25,6 +25,7 @@ public class UserInput {
     }
 
     public Scanner getUserInput() {
+        //TODO se if it is a text
         return userInput;
     }
 

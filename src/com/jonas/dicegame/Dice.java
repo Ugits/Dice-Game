@@ -9,8 +9,6 @@ import java.util.Random;
 public class Dice {
 
     final int numSides = 6;
-    int sumOfSet;
-    int value;
     int[] set;
 
     /**
