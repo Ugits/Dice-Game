@@ -8,8 +8,8 @@ import java.util.Random;
  */
 public class Dice {
 
-    final int numSides = 6;
-    int[] set;
+    private final int numSides = 6;
+    private int[] set;
 
     /**
      * Roll dice
@@ -24,14 +24,14 @@ public class Dice {
      * The values range varies depending on the dice number of sides
      * @return A random number
      */
-    public int genNum(){
+    private int genNum(){
         Random rand = new Random();
         return rand.nextInt(numSides) + 1;
     }
     /**
      * sorts set of dice in descending order
      */
-    public void sortSetDesc(){
+    private void sortSetDesc(){
         Arrays.sort(set);
         //System.out.println("[DEBUG] Score Descending  [DEBUG]");
     }
@@ -44,7 +44,7 @@ public class Dice {
     /**
      * @return An array of dice values
      */
-    public int[] getSet() {
+    private int[] getSet() {
         return set;
     }
     /**

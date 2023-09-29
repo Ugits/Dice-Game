@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class Table {
 
-    Player[] table;  //TODO - as ArrayList<Player>? (se kristoffer (video 26 sep 2:50))
+    private Player[] table;
 
     /**
      * Constructs object that holds an array with all players
@@ -20,12 +20,14 @@ public class Table {
         }
         System.out.println();
     }
+
     /**
      * Sorts the player table in descending order
      */
     public void sortScoreDescending(){
         Arrays.sort(this.table, Comparator.comparingInt(Player::getTotalScore).reversed());
     }
+
     /**
      *
      * @return Player[ ] playerTable

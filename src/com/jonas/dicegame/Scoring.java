@@ -2,12 +2,12 @@ package com.jonas.dicegame;
 
 public class Scoring {
 
-    Player[] table;
-    Player[] gold;
-    Player[] silver;
-    Player[] bronze;
+    private final Player[] table;
+    private final Player[] gold;
+    private final Player[] silver;
+    private final Player[] bronze;
 
-    int goldScore = 0, silverScore = 0, bronzeScore = 0;
+    private int goldScore = 0, silverScore = 0, bronzeScore = 0;
 
     /**
      * Constructs object that imports player array.
@@ -22,6 +22,7 @@ public class Scoring {
         this.bronze = new Player[numOfPlayers];
         this.table = table;
     }
+
     /**
      * Sorts players into arrays corresponding to their placings
      */

@@ -8,20 +8,21 @@ public class Setup {
 
     UserInput sc = new UserInput();
 
-    int rounds = 3;
+    private final int rounds = 3;
     int minRounds = 1;
     int maxRounds = 20;
-    int numPlayers;
-    int minPlayers = 2;
-    int maxPlayers = 20;
-    int numDice;
-    int minDice = 1;
-    int maxDice = 20;
+    private int numPlayers;
+    private final int minPlayers = 2;
+    private final int maxPlayers = 20;
+    private int numDice;
+    private final int minDice = 1;
+    private final int maxDice = 20;
 
     /**
      * Constructs object with fundamental game setup
      */
     public Setup(){
+
         setNumOfPlayers();
         setNumOfDice();
         //TODO
@@ -52,10 +53,8 @@ public class Setup {
 
     /**
      * Set number of players.
-     *
-     * @param numOfPlayers
      */
-    public void setNumOfPlayers() {
+    private void setNumOfPlayers() {
 
         do {
             System.out.print("Number of players: ");
@@ -75,10 +74,8 @@ public class Setup {
 
     /**
      * Set number of dice
-     *
-     * @param numOfDice
      */
-    public void setNumOfDice() {
+    private void setNumOfDice() {
 
         do {
             System.out.print("Number of dice: ");

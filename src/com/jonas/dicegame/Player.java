@@ -6,9 +6,9 @@ package com.jonas.dicegame;
 public class Player {
     UserInput sc = new UserInput();
 
-    int pNum;
-    String name;
-    int totalScore;
+    private int pNum;
+    private String name;
+    private int totalScore;
 
     /**
      * @return the players number
