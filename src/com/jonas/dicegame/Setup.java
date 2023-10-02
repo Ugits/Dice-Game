@@ -9,7 +9,7 @@ package com.jonas.dicegame;
  */
 public class Setup {
 
-    UserInput sc = new UserInput();
+    InputProcessing sc = new InputProcessing();
 
     private final int rounds = 3;
     int minRounds = 1;

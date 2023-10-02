@@ -13,5 +13,11 @@ public class Main {
 
         new Game();
 
+        // TODO: 2023-10-02
+        //  - close scanners
+        //  - rounds
+        //  - class descriptions
+
+
     }
 }

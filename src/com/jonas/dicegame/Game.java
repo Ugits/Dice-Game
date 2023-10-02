@@ -6,7 +6,7 @@ package com.jonas.dicegame;
  */
 public class Game {
 
-    private UserInput sc;
+    private InputProcessing sc;
     private Setup setup;
     private Table table;
     private Scoring finalScore;
@@ -26,7 +26,7 @@ public class Game {
      * <i>Resets the game</i>
      */
     private void instantiation() {
-        this.sc = new UserInput();
+        this.sc = new InputProcessing();
         this.setup = new Setup();
         this.table = new Table(setup.getNumPlayers());
         this.finalScore = new Scoring(setup.getNumPlayers(), table.getTable());
