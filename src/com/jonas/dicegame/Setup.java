@@ -11,9 +11,9 @@ public class Setup {
 
     InputProcessing sc = new InputProcessing();
 
-    private final int rounds = 3;
-    int minRounds = 1;
-    int maxRounds = 20;
+    private int rounds;
+    private final int minRounds = 1;
+    private final int maxRounds = 20;
     private int numPlayers;
     private final int minPlayers = 2;
     private final int maxPlayers = 20;
@@ -27,10 +27,9 @@ public class Setup {
      */
     public Setup(){
 
-        setNumOfPlayers();
+        setNumPlayers();
         setNumOfDice();
-        //TODO
-        // - how many rounds?
+        setRounds();
         System.out.println();
     }
 
@@ -45,6 +44,26 @@ public class Setup {
 
     /**
      * <font color = #d77048>
+     *      <i>Set number of rounds</i>
+     */
+    public void setRounds() {
+        do {
+            System.out.print("Number of rounds: ");
+            this.rounds = sc.tryNextInt();
+
+            if (rounds < minRounds) {
+                System.out.println("You at least gotta try!");
+            }
+            if (rounds > maxRounds) {
+                System.out.println("Trying to fry the cpu?!..");
+            }
+
+        } while (rounds < minRounds || rounds > maxRounds);
+
+    }
+
+    /**
+     * <font color = #d77048>
      *     <i>Get number of players</i>
      * @return Number of players.
      */
@@ -54,24 +73,14 @@ public class Setup {
 
     /**
      * <font color = #d77048>
-     *     <i>Get number of dice</i>
-     * @return Number of dice.
-     */
-    public int getNumDice() {
-        return numDice;
-    }
-
-    /**
-     * <font color = #d77048>
      *     <i>Set number of players.</i>
      */
-    private void setNumOfPlayers() {
+    private void setNumPlayers() {
 
         do {
             System.out.print("Number of players: ");
             this.numPlayers = sc.tryNextInt();
 
-            //Todo method validNumOfPlayers()
             if (numPlayers < minPlayers) {
                 System.out.println("It takes two, at least..");
             }
@@ -85,6 +94,15 @@ public class Setup {
 
     /**
      * <font color = #d77048>
+     *     <i>Get number of dice</i>
+     * @return Number of dice.
+     */
+    public int getNumDice() {
+        return numDice;
+    }
+
+    /**
+     * <font color = #d77048>
      *     <i>Set number of dice</i>
      */
     private void setNumOfDice() {
@@ -93,7 +111,6 @@ public class Setup {
             System.out.print("Number of dice: ");
             this.numDice = sc.tryNextInt();
 
-            //Todo method validNumOfDice()
             if (numDice < minDice) {
                 System.out.println("Gonna play with air?..");
             }

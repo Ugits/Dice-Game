@@ -18,20 +18,12 @@ public class Dice {
      * @param numDice number of dice to roll
      */
     public void roll(int numDice){
+        InputProcessing random = new InputProcessing();
         this.set = new int[numDice];
-        for (int i = 0; i < numDice; i++) this.set[i] = genNum();
+        for (int i = 0; i < numDice; i++) this.set[i] = random.genNum(numSides);
     }
 
-    /**
-     * <font color = #d77048>
-     *     <i>Generates a random number.
-     *     The values range varies depending on the dice number of sides</i>
-     * @return A random number
-     */
-    private int genNum(){
-        Random rand = new Random();
-        return rand.nextInt(numSides) + 1;
-    }
+
 
     /**
      * <font color = #d77048>

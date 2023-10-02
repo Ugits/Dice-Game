@@ -1,5 +1,9 @@
 
 package com.jonas.dicegame;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * <font color = #d77048>
  * <i>### Define Class</i>
@@ -17,20 +21,30 @@ public class Game {
      * <font color = #d77048>
      * <i>Creates object that initiate a new game</i>
      */
-    public Game() {
+    public Game() throws InterruptedException {
+        introMessage();
+
         loop();
     }
 
     /**
      * <font color = #d77048>
-     * <i>Resets the game</i>
+     * <i>Outputs the intro message to player</i>
+     * @throws InterruptedException
      */
-    private void instantiation() {
-        this.sc = new InputProcessing();
-        this.setup = new Setup();
-        this.table = new Table(setup.getNumPlayers());
-        this.finalScore = new Scoring(setup.getNumPlayers(), table.getTable());
-        this.d6 = new Dice();
+    public void introMessage() throws InterruptedException {
+        StringManipulation output = new StringManipulation();
+        String intro = """
+                Welcome!""";
+                //Before we start the game.
+                //Due to extreme graphics and advanced interactive features,
+                //we would strongly suggest you to shut down all other heavy CPU activities running!
+                //Before we get rollin, we must setup the game!
+                //""";
+
+        output.delayOutputColor(intro);
+
+        System.out.println();
     }
 
     /**
@@ -48,9 +62,23 @@ public class Game {
 
     /**
      * <font color = #d77048>
+     * <i>Resets the game</i>
+     */
+    private void instantiation() {
+
+        this.sc = new InputProcessing();
+        this.setup = new Setup();
+        this.table = new Table(setup.getNumPlayers());
+        this.finalScore = new Scoring(setup.getNumPlayers(), table.getTable());
+        this.d6 = new Dice();
+
+    }
+
+    /**
+     * <font color = #d77048>
      * <i>Iterates accordingly to rounds in setup</i>
      */
-    private void roundIterator(){
+    private void roundIterator() {
         for (int i = 0; i < setup.getRounds(); i++) {
             logics();
         }
@@ -60,7 +88,7 @@ public class Game {
      * <font color = #d77048>
      * <i>User gets options, new game or quit</i>
      */
-    private void newOrQuit(){
+    private void newOrQuit() {
         int playerChoice;
         do {
             System.out.println("Do you wish to play again?");
@@ -75,12 +103,18 @@ public class Game {
         } while (playerChoice != 1 && playerChoice != 2);
 
         switch (playerChoice) {
-            case 1: this.restart = true; break;
-            case 2: this.restart = false; break;
-            default: System.out.println("something wrong when choosing new game"); break;
+            case 1:
+                this.restart = true;
+                break;
+            case 2:
+                this.restart = false;
+                break;
+            default:
+                System.out.println("something wrong when choosing new game");
+                break;
         }
     }
-    
+
     /**
      * <font color = #d77048>
      * <i>The logics for one turn. Compiler iterates through all players</i>

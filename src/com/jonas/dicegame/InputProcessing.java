@@ -1,4 +1,5 @@
 package com.jonas.dicegame;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -15,6 +16,18 @@ public class InputProcessing {
      */
     public InputProcessing() {
         setScanner(new Scanner(System.in));
+    }
+
+    /**
+     * <font color = #d77048>
+     *     <i>Generates a random number.
+     *     The values range varies depending on the argument value</i>
+     * @param randomRange is the max value of a random number
+     * @return  A random number 1 -> randomRange
+     */
+    public int genNum(int randomRange){
+        Random rand = new Random();
+        return rand.nextInt(randomRange) + 1;
     }
 
     /**
@@ -36,7 +49,7 @@ public class InputProcessing {
      * <i>Get user input. No input is refused. Only alphabetical symbols</i>
      * @return a String value
      */
-    public String nextAlphabeticalLine() {
+    public String nextAlphabeticalLine()  {
         String temp;
         do {
             temp = getScanner().nextLine().trim();
