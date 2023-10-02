@@ -40,10 +40,10 @@ public class InputProcessing {
         String temp;
         do {
             temp = getScanner().nextLine().trim();
-            if (temp.isEmpty() || !temp.matches("^[a-öA-Ö]*$")) {
+            if (temp.isEmpty() || !temp.matches("^[a-öA-Ö ]*$")) {
                 System.out.println("Give me some letters...");
             }
-        } while (temp.isEmpty() || !temp.matches("^[a-öA-Ö]*$"));
+        } while (temp.isEmpty() || !temp.matches("^[a-öA-Ö ]*$"));
         return temp;
     }
 

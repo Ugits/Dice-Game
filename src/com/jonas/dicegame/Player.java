@@ -6,7 +6,7 @@ package com.jonas.dicegame;
  */
 public class Player {
 
-    InputProcessing sc = new InputProcessing();
+
 
     private int playerNum;
     private String name;
@@ -44,8 +44,10 @@ public class Player {
      *     <i>Set players name</i>
      */
     public void setName() {
+        InputProcessing sc = new InputProcessing();
         System.out.print("Player " + this.getPlayerNum() + " Enter you name: ");
         this.name = sc.nextAlphabeticalLine();
+
     }
 
     /**
