@@ -1,14 +1,18 @@
 package com.jonas.dicegame;
-
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * <font color = #d77048>
+ * <i>### Define Class</i>
+ */
 public class Table {
 
     private Player[] table;
 
     /**
-     * Constructs object that holds an array with all players
+     * <font color = #d77048>
+     *     <i>Constructs object that holds an array with all players</i>
      * @param numOfPlayers number of players
      */
     public Table(int numOfPlayers){
@@ -22,14 +26,16 @@ public class Table {
     }
 
     /**
-     * Sorts the player table in descending order
+     * <font color = #d77048>
+     *     <i>Sorts the player table in descending order</i>
      */
     public void sortScoreDescending(){
         Arrays.sort(this.table, Comparator.comparingInt(Player::getTotalScore).reversed());
     }
 
     /**
-     *
+     *<font color = #d77048>
+     *     <i>Get the player table</i>
      * @return Player[ ] playerTable
      */
     public Player[] getTable() {
@@ -37,10 +43,22 @@ public class Table {
     }
 
 
+
+
+
+    // TA BORT???
+
+    /**
+     *
+     * @param table
+     */
     public void setTable(Player[] table) {
         this.table = table;
     }
 
+    /**
+     *
+     */
     public void displayPlayerTable(){
         for (int i = 0; i < this.table.length; i++) {
             Player player = this.table[i];

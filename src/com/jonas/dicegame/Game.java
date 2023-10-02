@@ -1,24 +1,8 @@
 
 package com.jonas.dicegame;
 /**
- * <hr width="100%" size="1" />
- * <table width="200" border="0">
- * <tr>
- * <td>
- * <center>
- * <font color = #f1C651>
- * <a href="https://www.github.com/Ugits/">
- * <img style=img-align:center; src="https://avatars.githubusercontent.com/u/143827138?s=96&v=4"  width="41" height="41" border="2" alt="DO NOT PRESS!" />
- * </a>
- * </center>
- * </td>
- * <td>
  * <font color = #d77048>
- * <center><i>define game class</i></center>
- * </td>
- * </tr>
- * </table>
- * <hr width="100%" size="3" />
+ * <i>### Define Class</i>
  */
 public class Game {
 
@@ -36,6 +20,19 @@ public class Game {
     public Game() {
         loop();
     }
+
+    /**
+     * <font color = #d77048>
+     * <i>Resets the game</i>
+     */
+    private void instantiation() {
+        this.sc = new UserInput();
+        this.setup = new Setup();
+        this.table = new Table(setup.getNumPlayers());
+        this.finalScore = new Scoring(setup.getNumPlayers(), table.getTable());
+        this.d6 = new Dice();
+    }
+
     /**
      * <font color = #d77048>
      * <i>Initiates game loop</i>
@@ -83,19 +80,7 @@ public class Game {
             default: System.out.println("something wrong when choosing new game"); break;
         }
     }
-
-    /**
-     * <font color = #d77048>
-     * <i>Resets the game</i>
-     */
-    private void instantiation() {
-        this.sc = new UserInput();
-        this.setup = new Setup();
-        this.table = new Table(setup.getNumPlayers());
-        this.finalScore = new Scoring(setup.getNumPlayers(), table.getTable());
-        this.d6 = new Dice();
-    }
-
+    
     /**
      * <font color = #d77048>
      * <i>The logics for one turn. Compiler iterates through all players</i>
@@ -108,7 +93,7 @@ public class Game {
             table.getTable()[i].addTotalScore(sum);
             //print roll + roll total
             System.out.println(table.getTable()[i].getName() + " Rolls... ");
-            System.out.println(d6.printRoll() + " = " + d6.sumUpRoll());
+            System.out.println(d6.getStringSet() + " = " + d6.sumUpRoll());
             //print player total
             System.out.println("Current Score: " + table.getTable()[i].getTotalScore());
             System.out.println();

@@ -1,19 +1,24 @@
 package com.jonas.dicegame;
-
+/**
+ * <font color = #d77048>
+ * <i>### Define Class</i>
+ */
 public class Scoring {
 
     private final Player[] table;
     private final Player[] gold;
     private final Player[] silver;
     private final Player[] bronze;
-
-    private int goldScore = 0, silverScore = 0, bronzeScore = 0;
+    private int goldScore = 0;
+    private int silverScore = 0;
+    private int bronzeScore = 0;
 
     /**
-     * Constructs object that imports player array.
-     * And instantiates additional arrays for sorting final scores.
-     * @param numOfPlayers number of players
-     * @param table Player[ ] table
+     * <font color = #d77048>
+     *     <i>Construct object that stores player table for tracking player scores.
+     * And instantiates additional arrays for sorting final scores.</i>
+     * @param numOfPlayers import number of players
+     * @param table import player table
      */
     public Scoring(int numOfPlayers, Player[] table){
 
@@ -24,7 +29,8 @@ public class Scoring {
     }
 
     /**
-     * Sorts players into arrays corresponding to their placings
+     * <font color = #d77048>
+     *     <i>Sorts players into arrays corresponding to their placings</i>
      */
     public void assignMedals(){
 
@@ -63,7 +69,8 @@ public class Scoring {
     }
 
     /**
-     * Prints the players with the top 3 scores
+     * <font color = #d77048>
+     *     <i>Prints the players with the top 3 scores</i>
      */
     public void announceWinners(){
 

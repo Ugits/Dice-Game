@@ -3,7 +3,10 @@
  * The class purpose is to set the foundation for the game.
  */
 package com.jonas.dicegame;
-
+/**
+ * <font color = #d77048>
+ * <i>### Define Class</i>
+ */
 public class Setup {
 
     UserInput sc = new UserInput();
@@ -19,7 +22,8 @@ public class Setup {
     private final int maxDice = 20;
 
     /**
-     * Constructs object with fundamental game setup
+     * <font color = #d77048>
+     *     <i>Constructs object with fundamental game setup</i>
      */
     public Setup(){
 
@@ -31,6 +35,8 @@ public class Setup {
     }
 
     /**
+     * <font color = #d77048>
+     *     <i>Get number of rounds</i>
      * @return number of rounds
      */
     public int getRounds() {
@@ -38,6 +44,8 @@ public class Setup {
     }
 
     /**
+     * <font color = #d77048>
+     *     <i>Get number of players</i>
      * @return Number of players.
      */
     public int getNumPlayers() {
@@ -45,6 +53,8 @@ public class Setup {
     }
 
     /**
+     * <font color = #d77048>
+     *     <i>Get number of dice</i>
      * @return Number of dice.
      */
     public int getNumDice() {
@@ -52,7 +62,8 @@ public class Setup {
     }
 
     /**
-     * Set number of players.
+     * <font color = #d77048>
+     *     <i>Set number of players.</i>
      */
     private void setNumOfPlayers() {
 
@@ -73,7 +84,8 @@ public class Setup {
     }
 
     /**
-     * Set number of dice
+     * <font color = #d77048>
+     *     <i>Set number of dice</i>
      */
     private void setNumOfDice() {
 

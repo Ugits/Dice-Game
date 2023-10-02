@@ -1,19 +1,26 @@
 package com.jonas.dicegame;
 import java.util.Scanner;
 /*TODO Look up structure for custom made scanner class*/
+
+/**
+ * <font color = #d77048>
+ * <i>### Define Class</i>
+ */
 public class UserInput {
 
     Scanner userInput;
 
     /**
-     * Constructs object with custom-made scanner
+     * <font color = #d77048>
+     *     <i>Constructs object with custom-made scanner</i>
      */
     public UserInput(){
         setUserInput(new Scanner(System.in));
     }
 
     /**
-     * Validates that user input is of type int
+     * <font color = #d77048>
+     *     <i>Validates that user input is of type int</i>
      * @return An int from user
      */
     public int tryNextInt(){
@@ -24,13 +31,17 @@ public class UserInput {
         return userInput.nextInt();
     }
 
+    /**
+     *
+     * @return
+     */
     public Scanner getUserInput() {
-        //TODO se if it is a text
         return userInput;
     }
 
     /**
-     * Instantiates the UserInput
+     * <font color = #d77048>
+     *     <i>Instantiates the UserInput</i>
      * @param userInput Scanner(System.in)
      */
     public void setUserInput(Scanner userInput) {
