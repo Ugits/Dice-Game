@@ -9,18 +9,20 @@ import java.util.Comparator;
 public class Table {
 
     private Player[] table;
-
+    private StringManipulation output;
     /**
      * <font color = #d77048>
      *     <i>Constructs object that holds an array with all players</i>
      * @param numOfPlayers number of players
      */
-    public Table(int numOfPlayers){
+    public Table(int numOfPlayers, StringManipulation output){
         this.table = new Player[numOfPlayers];
+        this.output = output;
         for (int i = 0; i < numOfPlayers; i++) {
             this.table[i] = new Player();
-            this.table[i].setPlayerNum(i+1);
+            this.table[i].setNum(i+1);
             this.table[i].setName();
+            this.table[i].setColor(this.output.randomPastel());
         }
         System.out.println();
     }
@@ -62,7 +64,7 @@ public class Table {
     public void displayPlayerTable(){
         for (int i = 0; i < this.table.length; i++) {
             Player player = this.table[i];
-            System.out.println("Player: " + player.getPlayerNum());
+            System.out.println("Player: " + player.getNum());
             System.out.println("Name: " + player.getName());
             System.out.println("Score: " + player.getTotalScore());
             System.out.println();

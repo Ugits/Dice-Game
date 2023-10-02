@@ -73,7 +73,7 @@ public class InputProcessing {
      * <i>Call Scanner object</i>
      * @return scanner obj
      */
-    private Scanner getScanner() {
+    public Scanner getScanner() {
         return scanner;
     }
 

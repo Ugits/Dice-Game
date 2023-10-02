@@ -8,8 +8,9 @@ public class Player {
 
 
 
-    private int playerNum;
+    private int num;
     private String name;
+    private String color;
     private int totalScore;
 
     /**
@@ -17,17 +18,17 @@ public class Player {
      *     <i>Get the players assigned number</i>
      * @return the players number
      */
-    public int getPlayerNum() {
-        return playerNum;
+    public int getNum() {
+        return num;
     }
 
     /**
      * <font color = #d77048>
      * <i>Set value to player number</i>
-     * @param playerNum player number
+     * @param num player number
      */
-    public void setPlayerNum(int playerNum) {
-        this.playerNum = playerNum;
+    public void setNum(int num) {
+        this.num = num;
     }
 
     /**
@@ -45,9 +46,17 @@ public class Player {
      */
     public void setName() {
         InputProcessing sc = new InputProcessing();
-        System.out.print("Player " + this.getPlayerNum() + " Enter you name: ");
+        System.out.print("Player " + this.getNum() + " Enter you name: ");
         this.name = sc.nextAlphabeticalLine();
 
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     /**
