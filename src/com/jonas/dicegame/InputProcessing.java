@@ -1,10 +1,10 @@
 package com.jonas.dicegame;
-import java.util.Random;
 import java.util.Scanner;
 
 /**
  * <font color = #d77048>
- * <i>### Define Class</i>
+ * <i>The `InputProcessing` class is responsible for handling user input
+ *    and providing various input-related functionalities.</i>
  */
 public class InputProcessing {
 
@@ -16,18 +16,6 @@ public class InputProcessing {
      */
     public InputProcessing() {
         setScanner(new Scanner(System.in));
-    }
-
-    /**
-     * <font color = #d77048>
-     *     <i>Generates a random number.
-     *     The values range varies depending on the argument value</i>
-     * @param randomRange is the max value of a random number
-     * @return  A random number 1 -> randomRange
-     */
-    public int genNum(int randomRange){
-        Random rand = new Random();
-        return rand.nextInt(randomRange) + 1;
     }
 
     /**
@@ -46,7 +34,7 @@ public class InputProcessing {
 
     /**
      * <font color = #d77048>
-     * <i>Get user input. No input is refused. Only alphabetical symbols</i>
+     * <i>Get user input. No input is refused. Only alphabetical symbols and spaces allowed</i>
      * @return a String value
      */
     public String nextAlphabeticalLine()  {
@@ -58,14 +46,6 @@ public class InputProcessing {
             }
         } while (temp.isEmpty() || !temp.matches("^[a-öA-Ö ]*$"));
         return temp;
-    }
-
-    /**
-     * <font color = #d77048>
-     * <i>Dispose object for garbage collecting</i>
-     */
-    public void close() {
-        getScanner().close();
     }
 
     /**
@@ -86,7 +66,6 @@ public class InputProcessing {
     private void setScanner(Scanner scanner) {
         this.scanner = scanner;
     }
-
 
 }
 

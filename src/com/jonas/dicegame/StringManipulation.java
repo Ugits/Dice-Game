@@ -1,5 +1,5 @@
 package com.jonas.dicegame;
-
+import com.jonas.dicegame.Game;
 public class StringManipulation {
 
     /**
@@ -13,7 +13,7 @@ public class StringManipulation {
         for (char c : string.toCharArray()) {
 
             System.out.print(c);
-            Thread.sleep(100);
+            Thread.sleep(70);
         }
     }
 
@@ -27,7 +27,7 @@ public class StringManipulation {
         for (char c : string.toCharArray()) {
 
             System.out.print(randomPastel() + c + "\u001B[0m");
-            Thread.sleep(100);
+            Thread.sleep(70);
         }
     }
 
@@ -37,8 +37,8 @@ public class StringManipulation {
      * @return ANSI escape code
      */
     public String randomPastel() {
-        InputProcessing random = new InputProcessing();
-        int randomNum = random.genNum(7);
+        Game game = new Game();
+        int randomNum = game.genNum(7);
         return colorSwitch(randomNum);
 
     }

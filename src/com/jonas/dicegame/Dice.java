@@ -1,16 +1,17 @@
 package com.jonas.dicegame;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * <font color = #d77048>
- * <i>### Define Class</i>
+ * <i>The `Dice` class represents a set of dice used in a dice game.
+ *    It allows you to roll the dice, get the string representation of the dice rolls,
+ *    calculate the sum of the rolls, and sort the rolls in descending order.</i>
  */
 public class Dice {
 
-    private final int numSides = 6;
-    private int[] set;
+    private int[] setOfDice;
+
 
     /**
      * <font color = #d77048>
@@ -18,20 +19,10 @@ public class Dice {
      * @param numDice number of dice to roll
      */
     public void roll(int numDice){
-        InputProcessing random = new InputProcessing();
-        this.set = new int[numDice];
-        for (int i = 0; i < numDice; i++) this.set[i] = random.genNum(numSides);
-    }
-
-
-
-    /**
-     * <font color = #d77048>
-     *     <i>sorts set of dice in descending order</i>
-     */
-    private void sortSetDesc(){
-        Arrays.sort(set);
-        //System.out.println("[DEBUG] Score Descending  [DEBUG]");
+        Game game = new Game();
+        this.setOfDice = new int[numDice];
+        final int numSides = 6;
+        for (int i = 0; i < numDice; i++) this.setOfDice[i] = game.genNum(numSides);
     }
 
     /**
@@ -40,7 +31,7 @@ public class Dice {
      * @return The array of dice in type String
      */
     public String getStringSet(){
-        return Arrays.toString(getSet());
+        return Arrays.toString(getSetOfDice());
     }
 
     /**
@@ -48,8 +39,8 @@ public class Dice {
      *     <i>Get the set of dice</i>
      * @return array of current rolls
      */
-    private int[] getSet() {
-        return set;
+    private int[] getSetOfDice() {
+        return setOfDice;
     }
 
     /**
@@ -59,10 +50,11 @@ public class Dice {
      */
     public int sumUpRoll(){
         int sum = 0;
-        for (int value:getSet()) {
+        for (int value: getSetOfDice()) {
             sum += value;
         }
         return sum;
     }
+
 
 }

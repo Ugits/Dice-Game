@@ -1,5 +1,7 @@
 package com.jonas.dicegame;
 
+import java.util.ArrayList;
+
 /**
  * <font color = #d77048>
  * <i>### Define class</i>
@@ -77,32 +79,5 @@ public class Player {
         this.totalScore += scoreToAdd;
     }
 
-    public void playerColors(){
-        String[] colors = {
-                "\u001B[33m",     // Gold
-                "\u001B[37m",     // Silver
-                "\u001B[38;5;206m", // Pink
-                "\u001B[38;5;30m",  // Teal
-                "\u001B[38;5;183m", // Lavender
-                "\u001B[38;5;203m", // Coral
-                "\u001B[38;5;80m",  // Turquoise
-                "\u001B[38;5;84m",  // Mint Green
-                "\u001B[38;5;177m", // Lilac
-                "\u001B[38;5;208m", // Peach
-                "\u001B[38;5;63m",  // Royal Blue
-                "\u001B[38;5;34m",  // Emerald Green
-                "\u001B[38;5;214m", // Tangerine
-                "\u001B[38;5;117m", // Sky Blue
-                "\u001B[38;5;93m",  // Plum
-                "\u001B[38;5;226m", // Canary Yellow
-                "\u001B[38;5;201m", // Fuchsia
-                "\u001B[38;5;51m",  // Aqua
-                "\u001B[38;5;88m",  // Maroon
-                "\u001B[38;5;230m"  // Beige
-        };
 
-        for (int i = 0; i < colors.length; i++) {
-            System.out.println("Color " + i + ": " + colors[i] + "This is colored text." + "\u001B[0m");
-        }
-    }
 }

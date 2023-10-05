@@ -1,15 +1,17 @@
-
 package com.jonas.dicegame;
+
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Random;
 
 /**
  * <font color = #d77048>
- * <i>### Define Class</i>
+ * <i>The `Game` class represents a dice game application. It manages the game flow,
+ *    player interactions, rounds, and scoring.</i>
  */
 public class Game {
+
     StringManipulation output = new StringManipulation();
+    Player player = new Player();
     private InputProcessing sc;
     private Setup setup;
     private Table table;
@@ -19,9 +21,10 @@ public class Game {
 
     /**
      * <font color = #d77048>
-     * <i>Creates object that initiate a new game</i>
+     * <i>Initiate a new game</i>
      */
-    public Game() throws InterruptedException {
+    public void newGame() throws InterruptedException {
+
         introMessage();
 
         loop();
@@ -29,19 +32,17 @@ public class Game {
 
     /**
      * <font color = #d77048>
-     * <i>Outputs the intro message to player</i>
-     *
+     * <i>Outputs the intro message to player</i>     *
      * @throws InterruptedException
      */
-    public void introMessage() throws InterruptedException {
+    private void introMessage() throws InterruptedException {
 
         String intro = """
-                Welcome!""";
-        //Before we start the game.
-        //Due to extreme graphics and advanced interactive features,
-        //we would strongly suggest you to shut down all other heavy CPU activities running!
-        //Before we get rollin, we must setup the game!
-        //""";
+        Welcome!
+        Due to extreme graphics and advanced interactive features,
+        we would strongly suggest you to shut down all other heavy CPU activities running!
+        Before we get rollin, we must setup the game!
+        """;
 
         output.delayOutputColor(intro);
 
@@ -51,6 +52,7 @@ public class Game {
     /**
      * <font color = #d77048>
      * <i>Initiates game loop</i>
+     * @throws InterruptedException
      */
     private void loop() throws InterruptedException {
         do {
@@ -69,7 +71,7 @@ public class Game {
 
         this.sc = new InputProcessing();
         this.setup = new Setup();
-        this.table = new Table(setup.getNumPlayers(), output);
+        this.table = new Table(setup.getNumPlayers());
         this.finalScore = new Scoring(setup.getNumPlayers(), table.getTable());
         this.d6 = new Dice();
 
@@ -78,6 +80,7 @@ public class Game {
     /**
      * <font color = #d77048>
      * <i>Iterates accordingly to rounds in setup</i>
+     * @throws InterruptedException
      */
     private void roundIterator() throws InterruptedException {
         for (int i = 0; i < setup.getRounds(); i++) {
@@ -119,6 +122,7 @@ public class Game {
     /**
      * <font color = #d77048>
      * <i>The logics for one turn. Compiler iterates through all players</i>
+     * @throws InterruptedException
      */
     private void logics() throws InterruptedException {
         for (int i = 0; i < table.getTable().length; i++) {
@@ -128,22 +132,43 @@ public class Game {
             table.getTable()[i].addTotalScore(sum);
             //print roll + roll total
             printRolls(i);
+            printCurrentScore(i);
         }
     }
 
-    public void printRolls(int i) throws InterruptedException {
+    /**
+     * <font color = #d77048>
+     *      <i>Prints the dice rolls and scores for a player's turn.</i>
+     * @param i The index of the current player
+     * @throws InterruptedException
+     */
+    private void printRolls(int i) throws InterruptedException {
 
         System.out.print(table.getTable()[i].getColor() + table.getTable()[i].getName() + "\u001B[0m");
         waitForEnter();
         output.delayOutputColor("Rolls... ");
         output.delayOutputColor(d6.getStringSet() + " = " + d6.sumUpRoll());
         System.out.println();
+
+    }
+
+    /**
+     * <font color = #d77048>
+     *     <i>Prints the current score for a player.</i>
+     * @param i The index of the current player
+     * @throws InterruptedException
+     */
+    private void printCurrentScore(int i) throws InterruptedException {
         output.delayOutputColor("Current Score: ");
         System.out.println(table.getTable()[i].getTotalScore());
         System.out.println();
     }
 
-    public void waitForEnter() {
+    /**
+     * <font color = #d77048>
+     * <i>Waits for the player to press the Enter key.</i>
+     */
+    private void waitForEnter() {
         try {
             System.in.read();
         } catch (IOException error) {
@@ -159,5 +184,17 @@ public class Game {
         table.sortScoreDescending();
         finalScore.assignMedals();
         finalScore.announceWinners();
+    }
+
+    /**
+     * <font color = #d77048>
+     *     <i>Generates a random number.
+     *     The values range varies depending on the argument value</i>
+     * @param randomRange is the max value of a random number
+     * @return  A random number 1 -> randomRange
+     */
+    public int genNum(int randomRange){
+        Random rand = new Random();
+        return rand.nextInt(randomRange) + 1;
     }
 }
