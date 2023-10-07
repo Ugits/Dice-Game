@@ -1,5 +1,4 @@
 package com.jonas.dicegame;
-
 import java.util.Arrays;
 
 /**

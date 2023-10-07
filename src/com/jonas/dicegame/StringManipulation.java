@@ -11,29 +11,30 @@ public class StringManipulation {
 
     /**
      * <font color = #d77048>
-     * <i>Prints char by char of string output with delay</i>
+     * <i>Prints char by char of string output with delay, and adds boldness</i>
      *
      * @param string String to process
      * @throws InterruptedException Thrown if interrupted while sleeping.
      */
     public void delayOutputNonColor(String string) throws InterruptedException {
+
         for (char c : string.toCharArray()) {
 
-            System.out.print(c);
+            System.out.print("\u001B[97m" + "\u001B[1m" + c + "\u001B[0m");
             Thread.sleep(70);
         }
     }
 
     /**
      * <font color = #d77048>
-     * <i>Prints char by char of string output with delay, and adds color</i>
+     * <i>Prints char by char of string output with delay, and adds color and boldness</i>
      * @param string The string, to manipulate
      * @throws InterruptedException Thrown if interrupted while sleeping.
      */
     public void delayOutputColor(String string) throws InterruptedException {
         for (char c : string.toCharArray()) {
 
-            System.out.print(randomPastel() + c + "\u001B[0m");
+            System.out.print(randomPastel() + "\u001B[1m" + c + "\u001B[0m");
             Thread.sleep(70);
         }
     }
@@ -85,6 +86,14 @@ public class StringManipulation {
                 break;
         }
         return escapeCode;
+    }
+
+    /**
+     * <font color = #d77048>
+     *     <i>Creates a line break</i>
+     */
+    public void br(){
+        System.out.println();
     }
 
 }

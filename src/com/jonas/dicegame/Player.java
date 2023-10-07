@@ -7,6 +7,7 @@ package com.jonas.dicegame;
  *    retrieve and update player information.</i>
  */
 public class Player {
+    StringManipulation output = new StringManipulation();
 
     private int num;
     private String name;
@@ -44,9 +45,11 @@ public class Player {
      * <font color = #d77048>
      *     <i>Set players name</i>
      */
-    public void setName() {
+    public void setName(int index, Player[] table) throws InterruptedException {
         InputProcessing sc = new InputProcessing();
-        System.out.print("Player " + this.getNum() + " Enter you name: ");
+        System.out.print(table[index].getColor() + "\u001B[1m" + "Player " + this.getNum() + "\u001B[0m");
+        output.delayOutputNonColor(" Enter you name: ");
+
         this.name = sc.nextAlphabeticalLine();
 
     }

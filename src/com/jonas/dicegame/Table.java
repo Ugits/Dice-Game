@@ -20,13 +20,13 @@ public class Table {
      *
      * @param numOfPlayers number of players
      */
-    public Table(int numOfPlayers) {
+    public Table(int numOfPlayers) throws InterruptedException {
         this.table = new Player[numOfPlayers];
         for (int i = 0; i < numOfPlayers; i++) {
             this.table[i] = new Player();
             this.table[i].setNum(i + 1);
-            this.table[i].setName();
             this.table[i].setColor(playerColor(i));
+            this.table[i].setName(i, table);
         }
         System.out.println();
     }

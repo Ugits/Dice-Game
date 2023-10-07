@@ -1,5 +1,4 @@
 package com.jonas.dicegame;
-
 import java.io.IOException;
 import java.util.Random;
 
@@ -46,6 +45,8 @@ public class Game {
 
         output.delayOutputColor(intro);
 
+        Thread.sleep(3000);
+
         System.out.println();
     }
 
@@ -68,7 +69,7 @@ public class Game {
      * <font color = #d77048>
      * <i>Resets the game</i>
      */
-    private void instantiation() {
+    private void instantiation() throws InterruptedException {
 
         this.sc = new InputProcessing();
         this.setup = new Setup();
@@ -121,11 +122,12 @@ public class Game {
      */
     private void logics() throws InterruptedException {
         for (int i = 0; i < table.getTable().length; i++) {
+
             d6.roll(setup.getNumDice());
             int sum = d6.sumUpRoll();
-            // add score
+
             table.getTable()[i].addTotalScore(sum);
-            //print roll + roll total
+
             printRolls(i);
             printCurrentScore(i);
         }
@@ -139,7 +141,7 @@ public class Game {
      */
     private void printRolls(int i) throws InterruptedException {
 
-        System.out.print(table.getTable()[i].getColor() + table.getTable()[i].getName() + "\u001B[0m");
+        System.out.print(table.getTable()[i].getColor()+  "\u001B[1m" + table.getTable()[i].getName() + "\u001B[0m");
         waitForEnter();
         output.delayOutputColor("Rolls... ");
         output.delayOutputColor(d6.getStringSet() + " = " + d6.sumUpRoll());
@@ -175,11 +177,16 @@ public class Game {
      * <font color = #d77048>
      * <i>Sorts player accordingly to their final scores, and announcing placings</i>
      */
-    private void declareWinners() {
+    private void declareWinners() throws InterruptedException {
+
         table.sortScoreDescending();
+
         finalScore.assignMedals();
+
         finalScore.announceWinners();
     }
+
+
 
     /**
      * <font color = #d77048>

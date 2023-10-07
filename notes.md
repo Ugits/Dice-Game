@@ -13,7 +13,7 @@ spelare ska finnas med)
 * ● Två vinnare - hantera detta på ett relevant sätt
 * ● Scanner befinner sig inom en egen klass
 * ● Hantera att rätt svar kommer in under inmatning
-* ○ Namn får bara vara ‘string’
-* ○ Nummer får bara vara ‘integer’
-● Tre relevanta enhetstester */
+  * ○ Namn får bara vara ‘string’
+  * ○ Nummer får bara vara ‘integer’
+  ● Tre relevanta enhetstester */
             

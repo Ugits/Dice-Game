@@ -7,7 +7,7 @@ package com.jonas.dicegame;
  * for the game, ensuring they meet the specified constraints.</i>
  */
 public class Setup {
-
+    StringManipulation output = new StringManipulation();
     InputProcessing sc = new InputProcessing();
 
     private int rounds;
@@ -18,7 +18,7 @@ public class Setup {
      * <font color = #d77048>
      *     <i>Constructs object with fundamental game setup</i>
      */
-    public Setup(){
+    public Setup() throws InterruptedException {
 
         setNumPlayers();
         setNumOfDice();
@@ -39,18 +39,21 @@ public class Setup {
      * <font color = #d77048>
      *      <i>Set number of rounds</i>
      */
-    public void setRounds() {
+    public void setRounds() throws InterruptedException {
         int minRounds = 1;
         int maxRounds = 20;
         do {
-            System.out.print("Number of rounds: ");
+            output.delayOutputNonColor("Number of rounds: ");
             this.rounds = sc.tryNextInt();
+            System.out.println();
 
             if (rounds < minRounds) {
-                System.out.println("You at least gotta try!");
+                output.delayOutputNonColor("You at least gotta try!");
+                System.out.println();
             }
             if (rounds > maxRounds) {
-                System.out.println("Trying to fry the cpu?!..");
+                output.delayOutputNonColor("Trying to fry the cpu?!..");
+                System.out.println();
             }
 
         } while (rounds < minRounds || rounds > maxRounds);
@@ -70,19 +73,23 @@ public class Setup {
      * <font color = #d77048>
      *     <i>Set number of players.</i>
      */
-    private void setNumPlayers() {
+    private void setNumPlayers() throws InterruptedException {
 
         int minPlayers = 2;
         int maxPlayers = 20;
         do {
-            System.out.print("Number of players: ");
+
+            output.delayOutputNonColor("Number of players: ");
             this.numPlayers = sc.tryNextInt();
+            System.out.println();
 
             if (numPlayers < minPlayers) {
-                System.out.println("It takes two, at least..");
+                output.delayOutputNonColor("It takes two, at least..");
+                System.out.println();
             }
             if (numPlayers > maxPlayers) {
-                System.out.println("Not enough chairs..");
+                output.delayOutputNonColor("Not enough chairs..");
+                System.out.println();
             }
 
         } while (numPlayers < minPlayers || numPlayers > maxPlayers);
@@ -102,19 +109,22 @@ public class Setup {
      * <font color = #d77048>
      *     <i>Set number of dice</i>
      */
-    private void setNumOfDice() {
+    private void setNumOfDice() throws InterruptedException {
 
         int minDice = 1;
         int maxDice = 20;
         do {
-            System.out.print("Number of dice: ");
+            output.delayOutputNonColor("Number of dice: ");
             this.numDice = sc.tryNextInt();
+            System.out.println();
 
             if (numDice < minDice) {
-                System.out.println("Gonna play with air?..");
+                output.delayOutputNonColor("Gonna play with air?..");
+                System.out.println();
             }
             if (numDice > maxDice) {
-                System.out.println("Dude.. really?..");
+                output.delayOutputNonColor("Dude.. really?..");
+                System.out.println();
             }
 
         } while (numDice < minDice || numDice > maxDice);

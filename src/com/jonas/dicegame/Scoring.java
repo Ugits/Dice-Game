@@ -8,6 +8,8 @@ package com.jonas.dicegame;
  */
 public class Scoring {
 
+    StringManipulation output = new StringManipulation();
+
     private final Player[] table;
     private final Player[] gold;
     private final Player[] silver;
@@ -51,42 +53,101 @@ public class Scoring {
                 goldCount++;
                 playerCount++;
                 goldScore = playerScore;
-                System.out.println("Gold [DEBUG]");
 
             } else if (playerScore >= silverScore) {
                 silver[silverCount] = player;
                 silverCount++;
                 playerCount++;
                 silverScore = playerScore;
-                System.out.println("Silver [DEBUG]");
 
             } else if (playerScore >= bronzeScore) {
                 bronze[bronzeCount] = player;
                 bronzeCount++;
                 playerCount++;
                 bronzeScore = playerScore;
-                System.out.println("Bronze [DEBUG]");
-
             }
         }
     }
 
     /**
      * <font color = #d77048>
+     *     <i>Prints intro to counting</i>
+     * @throws InterruptedException
+     */
+    private void introAnnounceVisual() throws InterruptedException {
+        output.delayOutputColor("Comparing score . . . . ");
+        Thread.sleep(2000);
+        output.delayOutputColor("Done!!");
+        output.br();
+        output.br();
+    }
+
+    /**
+     * <font color = #d77048>
      *     <i>Prints the players with the top 3 scores</i>
      */
-    public void announceWinners(){
+    public void announceWinners() throws InterruptedException {
 
-        System.out.println("On third place.. with " + this.bronzeScore + " points!");
-        for (Player item : this.bronze) if (item != null) System.out.print(" [-" + item.getName() + "-] ");
-        System.out.println();
+        introAnnounceVisual();
 
-        System.out.println("And for the silver with " + this.silverScore + " points!");
-        for (Player value : this.silver) if (value != null) System.out.print(" [-" + value.getName() + "-] ");
-        System.out.println();
+        if (!(bronzeScore == 0)) {
 
-        System.out.println("And in the top, carrying the Gold..");
-        for (Player player : this.gold) if (player != null) System.out.print(" [-" + player.getName() + "-] ");
-        System.out.println("With " + this.goldScore + " points!!");
+            output.delayOutputNonColor("Qualifying the ");
+            System.out.print("\u001B[38;2;139;69;19m" + "\u001B[1m" + "BRONZE" +"\u001B[0m");
+            output.delayOutputNonColor(" .. with " + this.bronzeScore + " points!");
+
+            output.br();
+            Thread.sleep(500);
+
+            for (Player player : this.bronze) printPlayers(player);
+
+            output.br();
+            output.br();
+        }
+
+        if (!(silverScore == 0)) {
+
+            output.delayOutputNonColor("For the ");
+            System.out.print("\u001B[37m" + "\u001B[1m" + "SILVER" +"\u001B[0m");
+            output.delayOutputNonColor(" with " + this.silverScore + " points!");
+
+            output.br();
+            Thread.sleep(500);
+
+            for (Player player : this.silver) printPlayers(player);
+
+            output.br();
+            output.br();
+        }
+
+        if (!(goldScore == 0)) {
+
+            output.delayOutputNonColor("In the top, carrying the ");
+            System.out.print("\u001B[38;5;214m" + "\u001B[1m" + "GOLD !" +"\u001B[0m");
+            output.delayOutputNonColor(" With " + this.goldScore + " points!");
+
+            output.br();
+            Thread.sleep(500);
+
+            for (Player player : this.gold) printPlayers(player);
+
+            output.br();
+            output.br();
+        }
+
     }
+
+    /**
+     * <font color = #d77048>
+     *     <i>Print the player in players color</i>
+     * @param player player obj
+     */
+    private void printPlayers(Player player) throws InterruptedException {
+        if (player != null) {
+            Thread.sleep(1000);
+            System.out.println(player.getColor() + "\u001B[1m" + player.getName() + "\u001B[0m");
+            Thread.sleep(1000);
+        }
+    }
+
 }
