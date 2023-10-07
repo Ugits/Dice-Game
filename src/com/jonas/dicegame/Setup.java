@@ -1,25 +1,18 @@
-/**
- * Game set up
- * The class purpose is to set the foundation for the game.
- */
 package com.jonas.dicegame;
+
 /**
  * <font color = #d77048>
- * <i>### Define Class</i>
+ * <i>The `Setup` class handles the initial configuration of a dice game.
+ * It collects and validates the number of rounds, players, and dice
+ * for the game, ensuring they meet the specified constraints.</i>
  */
 public class Setup {
 
     InputProcessing sc = new InputProcessing();
 
     private int rounds;
-    private final int minRounds = 1;
-    private final int maxRounds = 20;
     private int numPlayers;
-    private final int minPlayers = 2;
-    private final int maxPlayers = 20;
     private int numDice;
-    private final int minDice = 1;
-    private final int maxDice = 20;
 
     /**
      * <font color = #d77048>
@@ -47,6 +40,8 @@ public class Setup {
      *      <i>Set number of rounds</i>
      */
     public void setRounds() {
+        int minRounds = 1;
+        int maxRounds = 20;
         do {
             System.out.print("Number of rounds: ");
             this.rounds = sc.tryNextInt();
@@ -77,6 +72,8 @@ public class Setup {
      */
     private void setNumPlayers() {
 
+        int minPlayers = 2;
+        int maxPlayers = 20;
         do {
             System.out.print("Number of players: ");
             this.numPlayers = sc.tryNextInt();
@@ -107,6 +104,8 @@ public class Setup {
      */
     private void setNumOfDice() {
 
+        int minDice = 1;
+        int maxDice = 20;
         do {
             System.out.print("Number of dice: ");
             this.numDice = sc.tryNextInt();

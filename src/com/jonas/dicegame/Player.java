@@ -1,18 +1,16 @@
 package com.jonas.dicegame;
 
-import java.util.ArrayList;
-
 /**
  * <font color = #d77048>
- * <i>### Define class</i>
+ * <i>The `Player` class represents a player in the dice game. It contains information about the player,
+ *    including their assigned number, name, color, and total score. This class provides methods to
+ *    retrieve and update player information.</i>
  */
 public class Player {
 
-
-
     private int num;
     private String name;
-    private String color;  // TODO: 2023-10-02  Make color array.. (added on in this script)
+    private String color;
     private int totalScore;
 
     /**
@@ -53,10 +51,21 @@ public class Player {
 
     }
 
+    /**
+     * <font color = #d77048>
+     * <i>Get the player's color.</i>
+     *
+     * @return The player's color.
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * <font color = #d77048>
+     *     <i>Set the player's color</i>
+     * @param color The player's color.
+     */
     public void setColor(String color) {
         this.color = color;
     }

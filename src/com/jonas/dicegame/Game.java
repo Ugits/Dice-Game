@@ -11,7 +11,7 @@ import java.util.Random;
 public class Game {
 
     StringManipulation output = new StringManipulation();
-    Player player = new Player();
+
     private InputProcessing sc;
     private Setup setup;
     private Table table;
@@ -61,6 +61,7 @@ public class Game {
             declareWinners();
             newOrQuit();
         } while (restart);
+
     }
 
     /**
@@ -107,15 +108,9 @@ public class Game {
         } while (playerChoice != 1 && playerChoice != 2);
 
         switch (playerChoice) {
-            case 1:
-                this.restart = true;
-                break;
-            case 2:
-                this.restart = false;
-                break;
-            default:
-                System.out.println("something wrong when choosing new game");
-                break;
+            case 1 -> this.restart = true;
+            case 2 -> this.restart = false;
+            default -> System.out.println("something wrong when choosing new game");
         }
     }
 
@@ -197,4 +192,5 @@ public class Game {
         Random rand = new Random();
         return rand.nextInt(randomRange) + 1;
     }
+
 }

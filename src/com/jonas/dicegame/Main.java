@@ -1,10 +1,3 @@
-/**
- *
- *
- *
- *
- */
-
 package com.jonas.dicegame;
 
 public class Main {

@@ -1,7 +1,10 @@
 package com.jonas.dicegame;
+
 /**
  * <font color = #d77048>
- * <i>### Define Class</i>
+ * <i>The `Scoring` class manages the scoring and ranking of players in the dice game.
+ * It sorts players into gold, silver, and bronze categories based on their scores and
+ * announces the top three players.</i>
  */
 public class Scoring {
 
@@ -86,6 +89,4 @@ public class Scoring {
         for (Player player : this.gold) if (player != null) System.out.print(" [-" + player.getName() + "-] ");
         System.out.println("With " + this.goldScore + " points!!");
     }
-
-
 }

@@ -1,5 +1,12 @@
 package com.jonas.dicegame;
-import com.jonas.dicegame.Game;
+
+/**
+ * <font color = #d77048>
+ * <i>The `StringManipulation` class provides methods for displaying strings
+ * with specific formatting and color effects. It allows for printing strings
+ * character by character with delays, adding random pastel colors to characters,
+ * and generating ANSI escape codes for colorful output.</i>
+ */
 public class StringManipulation {
 
     /**
@@ -7,7 +14,7 @@ public class StringManipulation {
      * <i>Prints char by char of string output with delay</i>
      *
      * @param string String to process
-     * @throws InterruptedException
+     * @throws InterruptedException Thrown if interrupted while sleeping.
      */
     public void delayOutputNonColor(String string) throws InterruptedException {
         for (char c : string.toCharArray()) {
@@ -20,8 +27,8 @@ public class StringManipulation {
     /**
      * <font color = #d77048>
      * <i>Prints char by char of string output with delay, and adds color</i>
-     * @param string the string to manipulate
-     * @throws InterruptedException
+     * @param string The string, to manipulate
+     * @throws InterruptedException Thrown if interrupted while sleeping.
      */
     public void delayOutputColor(String string) throws InterruptedException {
         for (char c : string.toCharArray()) {

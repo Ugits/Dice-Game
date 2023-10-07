@@ -12,7 +12,6 @@ public class Dice {
 
     private int[] setOfDice;
 
-
     /**
      * <font color = #d77048>
      *     <i>Roll dice</i>
@@ -55,6 +54,5 @@ public class Dice {
         }
         return sum;
     }
-
 
 }
