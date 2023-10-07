@@ -37,7 +37,7 @@ public class Dice {
      *     <i>Get the set of dice</i>
      * @return array of current rolls
      */
-    private int[] getSetOfDice() {
+    public int[] getSetOfDice() {
         return setOfDice;
     }
 
@@ -54,4 +54,7 @@ public class Dice {
         return sum;
     }
 
+    public void setSetOfDice(int[] setOfDice) {
+        this.setOfDice = setOfDice;
+    }
 }
