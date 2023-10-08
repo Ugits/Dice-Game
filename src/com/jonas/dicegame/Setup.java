@@ -23,7 +23,7 @@ public class Setup {
         setNumPlayers();
         setNumOfDice();
         setRounds();
-        System.out.println();
+        output.br();
     }
 
     /**
@@ -45,15 +45,15 @@ public class Setup {
         do {
             output.delayOutputNonColor("Number of rounds: ");
             this.rounds = sc.tryNextInt();
-            System.out.println();
+            output.br();
 
             if (rounds < minRounds) {
                 output.delayOutputNonColor("You at least gotta try!");
-                System.out.println();
+                output.br();
             }
             if (rounds > maxRounds) {
                 output.delayOutputNonColor("Trying to fry the cpu?!..");
-                System.out.println();
+                output.br();
             }
 
         } while (rounds < minRounds || rounds > maxRounds);
@@ -81,15 +81,15 @@ public class Setup {
 
             output.delayOutputNonColor("Number of players: ");
             this.numPlayers = sc.tryNextInt();
-            System.out.println();
+            output.br();
 
             if (numPlayers < minPlayers) {
                 output.delayOutputNonColor("It takes two, at least..");
-                System.out.println();
+                output.br();
             }
             if (numPlayers > maxPlayers) {
                 output.delayOutputNonColor("Not enough chairs..");
-                System.out.println();
+                output.br();
             }
 
         } while (numPlayers < minPlayers || numPlayers > maxPlayers);
@@ -116,15 +116,15 @@ public class Setup {
         do {
             output.delayOutputNonColor("Number of dice: ");
             this.numDice = sc.tryNextInt();
-            System.out.println();
+            output.br();
 
             if (numDice < minDice) {
                 output.delayOutputNonColor("Gonna play with air?..");
-                System.out.println();
+                output.br();
             }
             if (numDice > maxDice) {
                 output.delayOutputNonColor("Dude.. really?..");
-                System.out.println();
+                output.br();
             }
 
         } while (numDice < minDice || numDice > maxDice);

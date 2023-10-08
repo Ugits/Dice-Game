@@ -54,6 +54,12 @@ public class Dice {
         return sum;
     }
 
+    /**
+     * <font color = #d80000>
+     *     [Used for Testing]<br>
+     *     <i>Set a value to 'setOfDice'</i>
+     * @param setOfDice int[ ]
+     */
     public void setSetOfDice(int[] setOfDice) {
         this.setOfDice = setOfDice;
     }

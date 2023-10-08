@@ -145,7 +145,7 @@ public class Game {
         waitForEnter();
         output.delayOutputColor("Rolls... ");
         output.delayOutputColor(d6.getStringSet() + " = " + d6.sumUpRoll());
-        System.out.println();
+        output.br();
 
     }
 
@@ -158,7 +158,7 @@ public class Game {
     private void printCurrentScore(int i) throws InterruptedException {
         output.delayOutputColor("Current Score: ");
         System.out.println(table.getTable()[i].getTotalScore());
-        System.out.println();
+        output.br();
     }
 
     /**
@@ -185,8 +185,6 @@ public class Game {
 
         finalScore.announceWinners();
     }
-
-
 
     /**
      * <font color = #d77048>
