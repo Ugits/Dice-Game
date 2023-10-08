@@ -142,7 +142,9 @@ public class Game {
     private void printRolls(int i) throws InterruptedException {
 
         System.out.print(table.getTable()[i].getColor()+  "\u001B[1m" + table.getTable()[i].getName() + "\u001B[0m");
+
         waitForEnter();
+
         output.delayOutputColor("Rolls... ");
         output.delayOutputColor(d6.getStringSet() + " = " + d6.sumUpRoll());
         output.br();
@@ -163,13 +165,20 @@ public class Game {
 
     /**
      * <font color = #d77048>
-     * <i>Waits for the player to press the Enter key.</i>
+     * <i>Waits for the player to press the Enter key.
+     * If oter input than 'Enter', it consumes</i>
      */
-    private void waitForEnter() {
+    private void waitForEnter() throws InterruptedException {
         try {
-            System.in.read();
-        } catch (IOException error) {
-            error.printStackTrace();
+            output.delayOutputColor("    [Press Enter]");
+
+            int nextByte;
+            while ((nextByte = System.in.read()) != -1 && nextByte != '\n') {
+                // Consume and discard bytes in stack
+                //System.out.println("consuming : " + nextByte); [debug]
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
